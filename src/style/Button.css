@@ -1,0 +1,28 @@
+.btn {
+  width: 15%;
+  float: left;
+  padding: 8px 20px;
+  margin-left: 30px;
+  background-color: transparent;
+  border: 1px solid #1e64e6;
+  border-radius: 3px;
+  color: #1e64e6;
+}
+
+.btn:hover {
+  color: #fff;
+  border: 1px solid #000;
+  background-color: #1e64e6;
+}
+
+@media only screen and (max-width: 768px) {
+  .btn {
+    display: inline-block;
+    margin: 5px 0;
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #1e64e6;
+    border-radius: 3px;
+    color: #1e64e6;
+  }
+}

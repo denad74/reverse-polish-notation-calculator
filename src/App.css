@@ -1,0 +1,23 @@
+.container {
+  width: 80%;
+  height: auto;
+  margin: 30px auto;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+.section-form {
+  text-align: center;
+  padding: 20px;
+}
+
+.clear {
+  clear: left;
+}
+.error-message {
+  margin-top: 50px;
+}
+.error-message p {
+  padding: 5px;
+  color: red;
+}
