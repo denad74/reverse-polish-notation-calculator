@@ -44,6 +44,7 @@ const Form = (props) => {
     <div>
       <form className="form" onSubmit={onSubmitHandler}>
         <input
+          pattern="^\d*(\.\d{0,2})?$"
           className="form-input clear"
           onChange={onChangeHandler}
           onKeyPress={keyPressHandler}

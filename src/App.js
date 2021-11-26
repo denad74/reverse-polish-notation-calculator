@@ -16,33 +16,42 @@ function App() {
   const calculateHandler = (enteredNum) => {
     let stack = [];
     let enteredValue = enteredNum.split(",");
-
+    console.log(enteredValue);
     for (let i = 0; i < enteredValue.length; i++) {
-      if (!isNaN(+enteredValue[i]) && isFinite(enteredValue[i])) {
-        stack.push(enteredValue[i]);
+      if (!isNaN(enteredValue[i]) && isFinite(enteredValue[i])) {
+        console.log(typeof enteredValue[i]);
+        stack.push(+enteredValue[i]);
       } else {
         let x = stack.pop();
         let y = stack.pop();
+        console.log(x, y);
         if (y === undefined) {
           setErrorMessage(numberOfOperators);
           return;
         } else {
+          let z = "";
           if (enteredValue[i] === "+") {
-            stack.push(+x + +y);
+            z = (+x * 100 + +y * 100).toFixed(2);
+            stack.push(z / 100);
           } else if (enteredValue[i] === "-") {
-            stack.push(+y - +x);
+            z = (+x * 100 - +y * 100).toFixed(2);
+            stack.push(z / 100);
           } else if (enteredValue[i] === "*") {
-            stack.push(+x * +y);
+            z = (+x * 100 * +y * 100).toFixed(2);
+            stack.push(z / 100);
           } else if (enteredValue[i] === "/") {
-            stack.push(+y / +x);
+            z = (((+x * 100) / +y) * 100).toFixed(2);
+            stack.push(z / 100);
           }
         }
+        console.log(stack);
       }
     }
     if (stack.length > 1) {
       return setErrorMessage(numberOfOperands);
     }
-    return setResult(`${enteredNum} = ${stack.pop()}`);
+    let calculateResult = stack.pop();
+    return setResult(`${enteredNum} = ${calculateResult / 100}`);
   };
 
   const onErrorMessage = (message) => {
