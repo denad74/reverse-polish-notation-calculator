@@ -22,26 +22,27 @@ function App() {
         console.log(typeof enteredValue[i]);
         stack.push(+enteredValue[i]);
       } else {
-        let x = stack.pop();
-        let y = stack.pop();
+        let x = stack.pop().toFixed(2);
+        let y = stack.pop().toFixed(2);
         console.log(x, y);
+
         if (y === undefined) {
           setErrorMessage(numberOfOperators);
           return;
         } else {
           let z = "";
           if (enteredValue[i] === "+") {
-            z = (+x * 100 + +y * 100).toFixed(2);
+            z = +x * 100 + +y * 100;
             stack.push(z / 100);
           } else if (enteredValue[i] === "-") {
-            z = (+x * 100 - +y * 100).toFixed(2);
+            z = +x * 100 - +y * 100;
             stack.push(z / 100);
           } else if (enteredValue[i] === "*") {
-            z = (+x * 100 * +y * 100).toFixed(2);
-            stack.push(z / 100);
+            z = (+x * 100 * (+y * 100)) / 10000;
+            stack.push(z);
           } else if (enteredValue[i] === "/") {
-            z = (((+x * 100) / +y) * 100).toFixed(2);
-            stack.push(z / 100);
+            z = (+x * 100) / (+y * 100);
+            stack.push(z);
           }
         }
         console.log(stack);
@@ -51,7 +52,7 @@ function App() {
       return setErrorMessage(numberOfOperands);
     }
     let calculateResult = stack.pop();
-    return setResult(`${enteredNum} = ${calculateResult / 100}`);
+    return setResult(`${enteredNum} = ${calculateResult}`);
   };
 
   const onErrorMessage = (message) => {
